@@ -1,19 +1,19 @@
 class Book:
-    def __init__(self, title='', price=0, numberOfPages=0, author='', quantity=0, numberOfSales=0):
+    def __init__(self, title='', price=0, number_of_pages=0, author='', quantity=0, number_of_sales=0):
         self.title = title
         self.price = price
-        self.numberOfPages = numberOfPages
+        self.number_of_pages = number_of_pages
         self.author = author
         self.quantity = quantity
-        self.numberOfSales = numberOfSales
+        self.number_of_sales = number_of_sales
 
     def display_info(self):
         print(f"Назва книжки: {self.title}")
         print(f"Ціна: {self.price} грн")
-        print(f"К-сть сторінок: {self.numberOfPages}")
+        print(f"К-сть сторінок: {self.number_of_pages}")
         print(f"Автор: {self.author}")
         print(f"К-сть на складі: {self.quantity}")
-        print(f"К-сть продажів: {self.numberOfSales}")
+        print(f"К-сть продажів: {self.number_of_sales}")
         print("\n")
 
 
@@ -33,10 +33,6 @@ class BookShop:
         print(f"Книжка під назвою {title} не знайдена на складі.\n")
 
     def top_books_by_price(self, n):
-        # def get_book_price(book):
-        #     return book.price
-        # sorted_books = sorted(self.books, key=get_book_price, reverse=True)[:n]
-
         sorted_books = sorted(self.books, key=lambda x: x.price, reverse=True)[:n]
         print(f"Топ-{n} книжок за ціною:")
         for book in sorted_books:
@@ -44,11 +40,7 @@ class BookShop:
 
        
     def top_books_by_sales(self, n):
-        # def get_book_sales(book):
-        #     return book.numberOfSales
-        # sorted_books = sorted(self.books, key=get_book_sales, reverse=True)[:n]
-
-        sorted_books = sorted(self.books, key=lambda x: x.numberOfSales, reverse=True)[:n]
+        sorted_books = sorted(self.books, key=lambda x: x.number_of_sales, reverse=True)[:n]
         print(f"Топ-{n} книжок за продажем:")
         for book in sorted_books:
             book.display_info()
