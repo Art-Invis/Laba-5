@@ -1,0 +1,154 @@
+/* Основний контейнер для сторінки продукту */
+.item-page {
+  background-color: #ffffff; /* Темний фон для музичного стилю */
+  color: #000000; /* Світлий текст для контрасту */
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 50px auto; /* Центрування сторінки з відступом зверху */
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Тінь для створення об'єму */
+  display: flex; /* Flexbox для розміщення зображення поруч із текстом */
+  gap: 40px; /* Відстань між зображенням і текстом */
+  align-items: flex-start; /* Вирівнювання зверху */
+}
+
+/* Контейнер для зображення */
+.item-page .product-image-container {
+  flex: 1; /* Зображення займає 1 частину простору */
+  max-width: 400px; /* Максимальна ширина зображення */
+}
+
+.item-page img {
+  width: 100%; /* Зображення займає весь простір контейнера */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Глибока тінь для зображення */
+}
+
+/* Контейнер для текстової інформації */
+.item-page .product-info {
+  flex: 2; /* Текст займає 2 частини простору */
+}
+
+/* Заголовок продукту */
+.item-page h1 {
+  font-size: 36px;
+  color: #1db954; /* Яскравий зелений акцент для заголовку */
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #1db954, #ff4b2b); /* Градієнт для музичної тематики */
+  -webkit-background-clip: text;
+  color: transparent; /* Ефект градієнтного тексту */
+}
+
+/* Опис продукту */
+.item-page p {
+  font-size: 18px;
+  color: #555; /* Легкий сірий для тексту */
+  margin-bottom: 15px;
+  line-height: 1.6; /* Покращує читаемість */
+}
+
+/* Розділ для полів вводу */
+.fields {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Кожне поле вводу */
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Заповнює доступний простір */
+}
+
+/* Мітки для полів */
+.field label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Поля вводу для кількості та опцій */
+.field input,
+.field select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box; /* Щоб поле вводу не виходило за межі */
+}
+
+/* Для помилок */
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* Лінії розмежування для покращення читабельності */
+.item-page hr {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+}
+
+/* Ціна продукту */
+.product-price {
+  font-size: 50px;
+  font-weight: bold;
+  color: #ff4b2b; /* Яскравий червоний акцент для ціни */
+  margin: 20px 0;
+  border-bottom: 2px solid #ff4b2b; /* Лінія під ціною з таким же кольором */
+  padding-bottom: 10px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Тінь для ціни для більшого акценту */
+}
+
+/* Кнопки */
+.item-page .buttons {
+  margin-top: 20px;
+}
+
+.buy-button,
+.back-button {
+  padding: 15px 30px;
+  border-radius: 8px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-right: 10px;
+}
+
+.buy-button {
+  background-color: #ff4b2b;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тінь для кнопки */
+}
+
+.buy-button:hover {
+  background-color: #ff6a3a;
+  transform: scale(1.05);
+}
+
+.back-button {
+  background-color: #005f8c;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тінь для кнопки */
+}
+
+.back-button:hover {
+  background-color: #0070a5;
+  transform: scale(1.05);
+}
+.success-message {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  transition: opacity 0.5s ease;
+}

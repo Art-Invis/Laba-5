@@ -1,0 +1,85 @@
+.catalog-page {
+  padding: 20px;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between; /* Вирівнює елементи фільтра */
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.filters select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.filters button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #ff6363; /* Новий колір для кнопки */
+  color: white;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px; /* Додаємо трохи відступу ліворуч */
+}
+
+.filters button:hover {
+  background-color: #ff4040;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-card h3 {
+  font-size: 2rem;
+  background: linear-gradient(90deg, #1db954, #ff4b2b); /* Градієнт для музичної тематики */
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.product-card p {
+ 
+  color: #000000;
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.product-card button {
+  text-align: center;
+  padding: 10px 20px;
+  border: none;
+  background-color: #ff6363; /* Колір кнопки для карток продуктів */
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+  background-color: #ff4040;
+}

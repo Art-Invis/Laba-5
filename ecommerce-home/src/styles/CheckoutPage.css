@@ -1,0 +1,106 @@
+/* CheckoutPage.css */
+.checkout-page {
+    padding: 30px;
+    background-color: #f9f9f9;
+    color: #333;
+    max-width: 800px;
+    margin: 50px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .checkout-page h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 30px;
+  }
+  
+  .checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .form-input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+  }
+  
+  .form-input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .error-message {
+    color: #d9534f;
+    font-size: 0.9rem;
+  }
+  
+  .checkout-button {
+    padding: 15px;
+    font-size: 1.1rem;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+  }
+  
+  .checkout-button:hover {
+    background-color: #218838;
+  }
+  
+  .checkout-button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .checkout-page {
+      padding: 15px;
+    }
+  
+    .checkout-button {
+      font-size: 1rem;
+    }
+  }
+  /* CheckoutPage.css */
+
+/* Styling for the 'Go Back to Cart' button */
+.go-back-button {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #007bff; /* Blue background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px; /* Add margin to separate from form */
+    text-align: center;
+    display: block; /* Make button full width */
+    width: 100%; /* Make the button stretch */
+  }
+  
+  .go-back-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  

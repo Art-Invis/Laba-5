@@ -1,0 +1,92 @@
+.categories {
+  padding: 60px 20px;
+  text-align: center;
+
+}
+
+.categories h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #000000;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  
+  
+}
+
+.category-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.category-card {
+  background: linear-gradient(45deg, #0d3b66, #138a72);
+  border-radius: 12px;
+  padding: 30px 20px;
+  width: 300px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  margin: 15px;
+  border: 2px solid transparent;
+}
+
+.category-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+  border-color: #ffcc00;
+}
+
+.category-card img {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.category-card img:hover {
+  transform: scale(1.08);
+}
+
+.category-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: #ffcc00;
+  font-size: 1.5rem;
+  margin: 15px 0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.category-card ul {
+  font-family: 'Montserrat', sans-serif;
+  color: #e0e0e0;
+  list-style-type: disc;
+  padding-left: 25px;
+  text-align: left;
+}
+
+.category-card ul li {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+
+@media (max-width: 768px) {
+  .category-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category-card {
+    width: 90%;
+  }
+
+  .categories h2 {
+    font-size: 2rem;
+  }
+}

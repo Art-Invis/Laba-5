@@ -1,0 +1,28 @@
+/* Загальні стилі для сторінки */
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(45deg, #baffc9, #86cfff);
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+.view-more {
+  display: inline-block;
+  background-color: #0da828;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.view-more:hover {
+  background-color: #17d137;
+}
