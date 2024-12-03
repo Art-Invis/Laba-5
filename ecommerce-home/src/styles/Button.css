@@ -1,0 +1,29 @@
+/* Button Component */
+.main-button {
+  margin-top: 20px;
+  padding: 15px 25px;
+  background: linear-gradient(45deg, #ff4b2b, #ff416c); /* Градієнт для яскравого ефекту */
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 8px;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Легка тінь */
+}
+
+.main-button:hover {
+  background: linear-gradient(45deg, #ff6a3a, #ff6189); /* Яскравіший градієнт при наведенні */
+  transform: scale(1.05); /* Легке збільшення кнопки */
+  box-shadow: 0px 8px 15px rgba(255, 65, 108, 0.4); /* Більш яскрава тінь при наведенні */
+}
+
+.main-button:active {
+  transform: scale(0.98); /* Легке зменшення кнопки при натисканні */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Тінь при натисканні */
+}
+
+.main-button:focus {
+  outline: none; /* Видалити стандартне обведення при фокусі */
+  box-shadow: 0px 0px 5px rgba(255, 65, 108, 0.6); /* Тінь при фокусі */
+}

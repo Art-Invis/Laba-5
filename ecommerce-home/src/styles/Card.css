@@ -1,0 +1,62 @@
+.music-card {
+    border: 1px solid #1976D2;
+    width: 15%; /* Задаємо флекс і ширину для карток */
+    padding: 20px;
+    background: linear-gradient(45deg, #282828, #3b3b3b);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.music-card h3 {
+    padding-top: 0;
+    text-align: center;
+    font-size: 25px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Вирівнює кнопки по краях */
+    margin-top: 10px; /* Відстань від вмісту картки */
+}
+
+.music-card img {
+    width: 100%;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.music-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.music-card button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1;
+    margin: 0 5px;
+}
+
+.edit-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #1976D2;
+}
+
+.remove-btn {
+    background-color: #F44336;
+    color: white;
+}
+
+.remove-btn:hover {
+    background-color: #D32F2F;
+}

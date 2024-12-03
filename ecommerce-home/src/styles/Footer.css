@@ -1,0 +1,65 @@
+.footer {
+  background: linear-gradient(45deg, #0A1E4E, #1D2F6F); 
+  padding: 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center; /* Вирівнювання по центру */
+}
+
+.branding {
+  display: flex;
+  flex-direction: column; /* Вертикальне вирівнювання */
+  align-items: center; /* Вирівнювання по горизонталі */
+  text-align: center;
+}
+
+.footer-block h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  background: linear-gradient(90deg, #7cff41, #3388ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.branding p {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin: 10px 0; /* Зменшення відступів */
+  font-size: 1rem;
+  text-align: center;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: center; /* Центрування іконок */
+  align-items: center;
+}
+
+.social-icons img {
+  width: 25px; /* Більший розмір для кращої видимості */
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
