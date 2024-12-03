@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/Navigation.css'; // Підключаємо стилі
+import '../styles/Navigation.css';
 
 const Navigation = ({ activePage }) => {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token'); // Отримуємо токен із localStorage
+  const token = localStorage.getItem('token');
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Видаляємо токен
-    navigate('/login'); // Перенаправляємо на сторінку логіну
+    localStorage.removeItem('token');
+    navigate('/login');
   };
 
   return (
@@ -23,23 +23,18 @@ const Navigation = ({ activePage }) => {
         <li>
           <Link to="/cart" className={activePage === 'cart' ? 'active' : ''}>Cart</Link>
         </li>
-        
-        {/* Вертикальна риска для відділення */}
-        <div className="divider"></div>
-
-        {/* Логіка для логіну/реєстрації або виходу */}
         {!token ? (
           <>
             <li>
-              <Link to="/login" className="auth-link">Login</Link>
+              <Link to="/login" className={activePage === 'login' ? 'active' : ''}>Login</Link>
             </li>
             <li>
-              <Link to="/register" className="auth-link">Register</Link>
+              <Link to="/register" className={activePage === 'register' ? 'active' : ''}>Register</Link>
             </li>
           </>
         ) : (
           <li>
-            <button className="auth-button" onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout} className="logout-button">Logout</button>
           </li>
         )}
       </ul>

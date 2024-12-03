@@ -1,7 +1,7 @@
 /* Загальні стилі для сторінки */
 body {
   font-family: 'Roboto', sans-serif;
-  background: linear-gradient(45deg, #baffc9, #86cfff);
+  background-color: #d1d1d1;
   color: #e0e0e0;
   margin: 0;
   padding: 0;

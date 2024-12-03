@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart, updateQuantity, loadCart } from '../redux/actions';
+import { fetchCart, updateCart } from '../redux/actions';
 import { useNavigate } from 'react-router-dom';
 import "../styles/CartPage.css";
 
@@ -8,65 +8,40 @@ const CartPage = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const email = localStorage.getItem('email'); // Отримуємо email користувача з localStorage
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (email) {
-      // Витягування кошика користувача за email
-      const savedCart = localStorage.getItem(email);
-      if (savedCart) {
-        // Якщо кошик збережений під email, зчитуємо його в Redux
-        dispatch(loadCart(JSON.parse(savedCart)));
-      }
-    }
-  }, [dispatch, email]);
+    const loadCart = async () => {
+      setLoading(true);
+      await dispatch(fetchCart());
+      setLoading(false);
+    };
+    loadCart();
+  }, [dispatch]);
 
   const handleRemoveFromCart = (id, selectedOption) => {
-    dispatch(removeFromCart({ id, selectedOption }));
-
-    // Оновлення кошика в localStorage після видалення товару
-    const updatedCart = cart.filter(
-      (item) => item.id !== id || item.selectedOption !== selectedOption
-    );
-
-    if (updatedCart.length === 0) {
-      // Якщо кошик порожній, видаляємо його з localStorage
-      localStorage.removeItem(email);
-    } else {
-      // Якщо кошик не порожній, зберігаємо оновлений кошик в localStorage
-      localStorage.setItem(email, JSON.stringify(updatedCart));
-    }
+    const updatedCart = cart.filter(item => !(item.id === id && item.selectedOption === selectedOption));
+    dispatch(updateCart(updatedCart));
   };
 
   const handleQuantityChange = (id, selectedOption, quantity) => {
-    const item = cart.find(
-      (item) => item.id === id && item.selectedOption === selectedOption
-    );
-
+    const item = cart.find(item => item.id === id && item.selectedOption === selectedOption);
     if (item) {
-      const maxQuantity = item.selectableOptions?.find(
-        (opt) => opt.value === selectedOption
-      )?.quantity || Infinity;
-
+      const maxQuantity = item.selectableOptions?.find(opt => opt.value === selectedOption)?.quantity || Infinity;
       if (quantity > maxQuantity) {
         alert(`Only ${maxQuantity} items available for ${item.title} (${selectedOption}).`);
         return;
       }
     }
-
     if (quantity > 0) {
-      dispatch(updateQuantity(id, selectedOption, quantity));
-      saveCartToLocalStorage(); // Зберігаємо змінений кошик після кожної операції
+      const updatedCart = cart.map(item =>
+        item.id === id && item.selectedOption === selectedOption
+          ? { ...item, quantity }
+          : item
+      );
+      dispatch(updateCart(updatedCart));
     } else {
       alert("Quantity must be at least 1.");
-    }
-  };
-
-  const saveCartToLocalStorage = () => {
-    if (email) {
-      // Зберігаємо кошик у localStorage за email
-      localStorage.setItem(email, JSON.stringify(cart));
     }
   };
 
@@ -82,12 +57,15 @@ const CartPage = () => {
     navigate('/catalog');
   };
 
+  if (loading) {
+    return <p>Loading your cart...</p>;
+  }
+
   return (
     <div className="cart-page">
       <h2>Shopping Cart</h2>
       <div className="cart-summary">
-        <p>Total amount: <strong>${calculateTotalAmount()}</strong></p>
-        
+        <p>Total amount: <strong>${calculateTotalAmount().toFixed(2)}</strong></p>
         <button className="checkout-button" onClick={handleCheckout}>Continue</button>
       </div>
 
@@ -99,7 +77,7 @@ const CartPage = () => {
       ) : (
         <div className="cart-items">
           {cart.map((item) => (
-            <div key={item.id + item.selectedOption} className="cart-item">
+            <div key={`${item.id}-${item.selectedOption}`} className="cart-item">
               <img src={item.imageUrl || '/default-image.jpg'} alt={item.title} className="cart-item-image" />
               <div className="cart-item-details">
                 <h3 className="item-title">{item.title}</h3>
@@ -108,7 +86,6 @@ const CartPage = () => {
                 {item.selectedOption && (
                   <p className="item-option">Option: <strong>{item.selectedOption}</strong></p>
                 )}
-
                 <div className="quantity-container">
                   <span>Amount:</span>
                   <div className="quantity-controls">
@@ -130,7 +107,6 @@ const CartPage = () => {
           ))}
         </div>
       )}
-      
     </div>
   );
 };

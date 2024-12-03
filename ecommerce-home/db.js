@@ -137,65 +137,19 @@ const seedDatabase = () => {
 
 // Заповнення бази даних
 // seedDatabase();
-
 db.serialize(() => {
-  // Таблиця користувачів
   db.run(`CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    email TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL
-  )`, (err) => {
-    if (err) {
-      console.error("Помилка при створенні таблиці users:", err.message);
-    } else {
-      console.log("Таблиця users створена або вже існує.");
-    }
-  });
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT,
+      password TEXT
+  )`);
 
-  // Таблиця кошиків
   db.run(`CREATE TABLE IF NOT EXISTS carts (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER NOT NULL UNIQUE, -- Додаємо унікальне обмеження
-    cart_data TEXT,
-    FOREIGN KEY(user_id) REFERENCES users(id)
-  )`, (err) => {
-    if (err) {
-      console.error("Помилка при створенні таблиці carts:", err.message);
-    } else {
-      console.log("Таблиця carts створена або вже існує.");
-    }
-  });
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER,
+      cart_data TEXT,
+      FOREIGN KEY (user_id) REFERENCES users (id)
+  )`);
 });
-
-
-
-// Функція для додавання кошика
-const insertCart = (userId, cartData) => {
-  const cartDataJSON = JSON.stringify(cartData); // Перетворення даних у JSON
-  db.run(
-    `INSERT INTO carts (user_id, cart_data) VALUES (?, ?)`,
-    [userId, cartDataJSON],
-    (err) => {
-      if (err) {
-        console.error("Помилка при додаванні кошика:", err.message);
-      } else {
-        console.log("Кошик додано успішно.");
-      }
-    }
-  );
-};
-
-// Приклад використання функції
-const exampleCartData = {
-  items: [
-    { productId: 188, variantId: 313, quantity: 2 },
-    { productId: 189, variantId: 315, quantity: 1 }
-  ],
-  totalPrice: 130.0
-};
-
-// Додавання кошика для користувача з ID 1
-insertCart(6, exampleCartData);
-
 
 module.exports = db;

@@ -50,51 +50,23 @@ const ItemPage = () => {
       setError("Please select an option before adding to cart.");
       return;
     }
-  
+
     const selectedOptionDetails = product.selectableOptions.find(option => option.value === selectedOption);
     if (selectedOptionDetails && quantity > selectedOptionDetails.quantity) {
       setError(`Only ${selectedOptionDetails.quantity} items available.`);
       return;
     }
-  
+
     const itemToAdd = {
       ...product,
       quantity,
       selectedOption,
       maxQuantity: selectedOptionDetails?.quantity,
     };
-  
-    // Додаємо товар до кошика через Redux
     dispatch(addToCart(itemToAdd));
-  
-    // Оновлення кошика в localStorage для цього email
-    const email = localStorage.getItem('email');
-    if (email) {
-      // Отримуємо кошик з localStorage для цього email, якщо він існує
-      const savedCart = JSON.parse(localStorage.getItem(email)) || [];
-      
-      // Перевіряємо, чи вже є цей товар в кошику
-      const existingItemIndex = savedCart.findIndex(
-        (item) => item.id === itemToAdd.id && item.selectedOption === itemToAdd.selectedOption
-      );
-  
-      if (existingItemIndex >= 0) {
-        // Якщо товар вже є в кошику, оновлюємо його кількість
-        savedCart[existingItemIndex].quantity += itemToAdd.quantity;
-      } else {
-        // Якщо товару немає, додаємо новий
-        savedCart.push(itemToAdd);
-      }
-  
-      // Зберігаємо оновлений кошик в localStorage
-      localStorage.setItem(email, JSON.stringify(savedCart));
-    }
-  
     setSuccessMessage(`"${product.title}" added to cart!`);
     setTimeout(() => setSuccessMessage(""), 3000);
   };
-  
-
 
   const selectedOptionDetails = product.selectableOptions?.find(option => option.value === selectedOption);
 

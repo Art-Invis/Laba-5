@@ -5,14 +5,12 @@ const cors = require('cors');
 const path = require('path');
 const db = require('./db'); 
 require('dotenv').config();
-const dotenv = require('dotenv');
 
-dotenv.config(); // Завантаження .env
-const SECRET_KEY = process.env.SECRET_KEY;
-
-console.log('Секретний ключ:', SECRET_KEY); // Перевірка
 const app = express();
 const PORT = 3001;
+const SECRET_KEY = process.env.SECRET_KEY;
+
+console.log('Секретний ключ:', SECRET_KEY); // Перевірка, чи ключ завантажено
 
 app.use(cors());
 app.use(bodyParser.json());
